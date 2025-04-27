@@ -8,7 +8,7 @@ fi
 
 input_dir="$1"
 output_dir="$2"
-max_depth=4
+max_depth=10000
 
 if [[ ! -d "$input_dir" ]]
 then

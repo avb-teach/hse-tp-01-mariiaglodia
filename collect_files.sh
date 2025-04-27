@@ -8,6 +8,7 @@ fi
 
 input_dir="$1"
 output_dir="$2"
+max_depth=4
 
 if [[ ! -d "$input_dir" ]]
 then
@@ -33,9 +34,10 @@ name=$(basename "$path")
 output_path="$output_dir/$name"
 
 cntr=1
+dot="."
     while [[ -e "$output_path" ]]
     do
-    rep_name="${name%.*}${cntr}${name##*.}"
+    rep_name="${name%.*}${cntr}${dot}${name##*.}"
     output_path="$output_dir/$rep_name"
     ((cntr++))
     done

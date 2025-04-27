@@ -8,7 +8,7 @@ fi
 
 input_dir="$1"
 output_dir="$2"
-max_depth=10000
+max_depth=-1
 
 if [[ ! -d "$input_dir" ]]
 then
@@ -28,7 +28,12 @@ then
 max_depth="$4"
 fi
 
-find "$input_dir" -maxdepth "$max_depth" -type f -print0 | while IFS= read -r -d '' path
+if [[ max_depth -lt 0 ]]
+then
+find "$input_dir" -type f -print0 
+else
+find "$input_dir" -maxdepth "$max_depth" -type f -print0 
+fi | while IFS= read -r -d '' path
 do 
 name=$(basename "$path")
 output_path="$output_dir/$name"

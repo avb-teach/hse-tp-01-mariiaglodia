@@ -25,10 +25,10 @@ then
     echo "Error: a number for --max_depth is needed"
     exit 1
     fi
-max_depth="$4"
+max_depth="$4" + 1
 fi
 
-if [[ max_depth -lt 0 ]]
+if [[ "$max_depth" -lt 0 ]]
 then
 find "$input_dir" -type f -print0 
 else
